@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>para você ❤️</title>
+<style>
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  background:linear-gradient(135deg,#710336,#710336);
+  font-family:Arial, sans-serif;
+  text-align:center;
+  color:#3f65c6;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  overflow-x:hidden;
+}
+
+button{
+  padding:15px 35px;
+  font-size:20px;
+  border:none;
+  border-radius:15px;
+  background:#ebb9c4;
+  color:rgb(206, 60, 60);
+  cursor:pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+#mensagem{
+  margin-top:30px;
+  font-size:20px;
+  line-height:1.5;
+  display:none;
+}
+
+#mensagem > img{
+  margin-top:15px;
+  border-radius:20px;
+  opacity:0;
+  transition:opacity 3s;
+  max-width:90%;
+  height:auto;
+}
+
+.coracao{
+  position:fixed;
+  color:rgba(140, 12, 37, 0.76);
+  font-size:24px;
+  animation:subir 3s linear infinite;
+}
+
+@keyframes subir{
+  from{ transform:translateY(0); opacity:1; }
+  to{ transform:translateY(-100vh); opacity:0; }
+}
+
+/* Modal para o contador */
+#modalContador{
+  display:none;
+  position:fixed;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:100;
+}
+
+#contadorBox{
+  background:linear-gradient(135deg,#b41318,#4c28c3a1);
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  max-width:90%;
+}
+
+#contador{
+  font-size:22px;
+  line-height:1.4;
+  white-space: pre-line;
+  margin-top:15px;
+}
+.closeBtn{
+  margin-top:20px;
+  padding:10px 25px;
+  font-size:18px;
+  border-radius:10px;
+  background:#450228;
+}
+
+/* Photobook / álbum de fotos */
+#photobook{
+  position:relative;
+  margin-top:30px;
+  width:90%;
+  max-width:400px;
+  height:300px;
+  overflow:hidden;
+  border-radius:20px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+.slide{
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  left:0;
+}
+.textoSlide{
+  position:absolute;
+  bottom:15px;
+  width:100%;
+  text-align:center;
+  color:rgb(61, 196, 196);
+  font-size:18px;
+  font-weight:bold;
+  text-shadow:2px 2px 5px rgba(0,0,0,0.5);
+}
+#photobook button{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:24px;
+  background:rgba(0,0,0,0.3);
+  color:rgb(205, 182, 182);
+  border:none;
+  border-radius:50%;
+  width:40px;
+  height:40px;
+  cursor:pointer;
+}
+#photobook button.left{ left:10px; }
+#photobook button.right{ right:10px; }
+</style>
+</head>
+<body>
+
+<h1>eu fiz uma coisinha pra você</h1>
+
+<button onclick="surpresa()">clica aqui 🩵</button>
+
+<div id="mensagem">
+entre bilhões de pessoas no mundo,<br>
+eu tive a sorte de encontrar você, luana 🩵
+
+<br><br>
+
+<img src="foto.luana.jpg.jpeg" width="250">
+
+<br><br>
+
+<iframe style="border-radius:12px"
+src="https://open.spotify.com/embed/track/1chcsgpMWNNfTuhXSujoUA"
+width="300" height="80" frameBorder="0" allowfullscreen=""
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
+
+<br><br>
+
+<!-- Botão para abrir o contador na mesma página -->
+<button onclick="abrirContador()">ver quanto tempo você faz a minha vida mais feliz ⏳</button>
+
+<br><br>
+
+<!-- Photobook / álbum de fotos -->
+<div id="photobook">
+  <div class="slide">
+    <img src="nossoprimeiroencontro.jpeg" style="width:100%; height:100%; object-fit:cover;">
+    <div class="textoSlide">Nosso primeiro encontro ❤️</div>
+  </div>
+  <div class="slide" style="display:none;">
+    <img src="umdiaespecial.jpeg" style="width:100%; height:100%; object-fit:cover;">
+    <div class="textoSlide">Um momento especial 🌸</div>
+  </div>
+  <div class="slide" style="display:none;">
+    <img src="semprejuntas.jpeg" style="width:100%; height:100%; object-fit:cover;">
+    <div class="textoSlide">Sempre nós 💕</div>
+  </div>
+  <div class="slide" style="display:none;">
+    <img src="favorita.jpeg" style="width:100%; height:100%; object-fit:cover;">
+    <div class="textoSlide">Não sabia que poderia amar tanto uma rival assim 💕</div>
+  </div>
+  <!-- Setas -->
+  <button class="left" onclick="mudarSlide(-1)">&#10094;</button>
+  <button class="right" onclick="mudarSlide(1)">&#10095;</button>
+</div>
+<!-- Carta -->
+  <div id="carta" style="margin-top:20px; background:rgba(224, 116, 116, 0.8); padding:15px; border-radius:15px; max-width:90%; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,0.2);">
+    <h3 style="color:#8B0000;">Minha carta para você 💌</h3>
+        <p>
+       <p style="color:#8d0503;">
+ Minha querida Luana,
+
+Sinto que cada instante sem você é como um salão sem música: vazio, silencioso e frio. Não há ornamento, nem luz que consiga preencher o espaço que você preenche em minha vida. Sua presença é como a mais bela sinfonia que eleva o espírito e aquece o coração.
+
+Confesso que há momentos em que temo não ser digna de tanto encanto, mas cada gesto seu, cada sorriso, cada palavra, faz-me sentir que a sorte decidiu sorrir para mim. Você é minha confidência silenciosa, meu deleite secreto e meu mais doce consolo.
+
+Permita-me, minha adorável dama, continuar a trilhar ao seu lado cada dia, não apenas como companhia, mas como alguém que a admira, respeita e ama com todo o fervor que a vida me ensinou a cultivar. Se meu coração pudesse sussurrar, ele não faria outra coisa senão pronunciar o seu nome.
+
+Com eterna admiração e ternura,
+ Araujo 
+    </p>
+  </div>
+</div>
+</div>
+
+<!-- Modal do contador -->
+<div id="modalContador">
+  <div id="contadorBox">
+    <h2>quanto tempo estamos juntas 🩵 </h2>
+    <p id="contador"></p>
+    <button class="closeBtn" onclick="fecharContador()">fechar</button>
+  </div>
+</div>
+
+<script>
+// Data do primeiro beijo
+const dataInicio = new Date("2025-03-28"); 
+
+// Contador
+function atualizarContador() {
+  const agora = new Date();
+  const diferenca = agora - dataInicio; 
+
+  const segundosTotais = Math.floor(diferenca / 1000);
+  const minutosTotais = Math.floor(segundosTotais / 60);
+  const horasTotais = Math.floor(minutosTotais / 60);
+  const diasTotais = Math.floor(horasTotais / 24);
+  const semanas = Math.floor(diasTotais / 7);
+  const meses = Math.floor(diasTotais / 30); 
+
+  document.getElementById("contador").innerText =
+    meses + " meses\n" +
+    semanas + " semanas\n" +
+    diasTotais + " dias\n" +
+    horasTotais + " horas\n" +
+    minutosTotais + " minutos\n" +
+    segundosTotais + " segundos";
+}
+
+function abrirContador(){
+  document.getElementById("modalContador").style.display="flex";
+  atualizarContador();
+  setInterval(atualizarContador,1000);
+}
+function fecharContador(){
+  document.getElementById("modalContador").style.display="none";
+}
+
+// Surpresa com corações
+function surpresa(){
+  document.getElementById("mensagem").style.display="block";
+  document.querySelector("#mensagem > img").style.opacity="1";
+
+  setInterval(()=>{
+    const coracao=document.createElement("div");
+    coracao.classList.add("coracao");
+    coracao.innerHTML="🩵";
+    coracao.style.left=Math.random()*100+"vw";
+    coracao.style.fontSize=(Math.random()*20+20)+"px";
+    coracao.style.animationDuration=(Math.random()*2+2)+"s";
+    document.body.appendChild(coracao);
+    setTimeout(()=>{ coracao.remove() },3000);
+  },300);
+}
+
+// Photobook / slideshow
+let indiceSlide = 0;
+
+function mostrarSlide(i){
+  const slides = document.querySelectorAll("#photobook .slide");
+  slides.forEach(s => s.style.display="none");
+  slides[i].style.display="block";
+}
+
+function mudarSlide(n){
+  const slides = document.querySelectorAll("#photobook .slide");
+  indiceSlide += n;
+  if(indiceSlide < 0) indiceSlide = slides.length -1;
+  if(indiceSlide >= slides.length) indiceSlide = 0;
+  mostrarSlide(indiceSlide);
+}
+
+// iniciar slideshow
+mostrarSlide(indiceSlide);
+</script>
+
+</body>
+</html>

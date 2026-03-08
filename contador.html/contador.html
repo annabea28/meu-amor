@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>nosso tempo juntos ⏳</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  font-family:Arial, sans-serif;
+  text-align:center;
+  color:#ffdde1;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+#contador{
+  font-size:24px;
+  line-height:1.4;
+  white-space: pre-line;
+  opacity:0;
+  transition:opacity 2s;
+}
+</style>
+</head>
+<body>
+
+<h1>quanto tempo estamos juntos ❤️</h1>
+<p id="contador"></p>
+
+<script>
+const dataInicio = new Date("2025-03-28"); // primeira vez que se beijaram
+
+function atualizarContador() {
+  const agora = new Date();
+  const diferenca = agora - dataInicio; // diferença em ms
+
+  const segundosTotais = Math.floor(diferenca / 1000);
+  const minutosTotais = Math.floor(segundosTotais / 60);
+  const horasTotais = Math.floor(minutosTotais / 60);
+  const diasTotais = Math.floor(horasTotais / 24);
+  const semanas = Math.floor(diasTotais / 7);
+  const meses = Math.floor(diasTotais / 30); // aproximado
+
+  const contadorEl = document.getElementById("contador");
+  contadorEl.innerText =
+    meses + " meses\n" +
+    semanas + " semanas\n" +
+    diasTotais + " dias\n" +
+    horasTotais + " horas\n" +
+    minutosTotais + " minutos\n" +
+    segundosTotais + " segundos";
+
+  contadorEl.style.opacity = "1"; // fade-in suave
+}
+
+atualizarContador();
+setInterval(atualizarContador, 1000);
+</script>
+
+</body>
+</html>
