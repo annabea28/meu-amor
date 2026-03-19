@@ -15,4 +15,4 @@ Tecnologias:
 - CSS3
 - JavaScript
 
-💡 Este projeto também representa a aplicação prática de conceitos de front-end em um contexto criativo e personalizado.
+ Este projeto também representa a aplicação prática de conceitos de front-end em um contexto criativo e personalizado.
