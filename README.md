@@ -1,4 +1,4 @@
-# Programa🎁 Projeto: Página Interativa Personalizada
+# Programa Projeto: Página Interativa Personalizada
 
 Este projeto foi desenvolvido como uma experiência web interativa, com foco em design emocional e usabilidade.
 
